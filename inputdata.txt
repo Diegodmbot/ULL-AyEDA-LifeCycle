@@ -1,0 +1,8 @@
+// Tamano del Mundo
+5 5
+// Numero de celulas
+3
+// Coordenadas de las celulas
+0 0
+0 1
+0 2
