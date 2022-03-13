@@ -12,6 +12,8 @@
 
 #include "State.hpp"
 
+#include "Grid.hpp"
+
 State::State() {}
 
 State::~State() {}

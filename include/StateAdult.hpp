@@ -20,7 +20,7 @@ class StateAdult : public State {
   ~StateAdult();
   char GetState() const;
   State* NextState();
-  int Neighbors(const Grid&, int i, int j);
+  void Neighbors(const Grid&, int i, int j);
 };
 
 #endif

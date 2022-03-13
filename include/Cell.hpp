@@ -19,6 +19,14 @@
 
 const int kNunmberOfNeighbors = 8;
 
+struct Neighbords {
+  int dead = 0;
+  int egg = 0;
+  int larva = 0;
+  int pupa = 0;
+  int adult = 0;
+};
+
 class Cell {
  public:
   Cell();
@@ -26,6 +34,7 @@ class Cell {
   // Getters - Setters
   char GetActualState(void) const;
   char GetNextState(void) const;
+  Neighbords GetCellNeighbords(void) const;
   void SetActualState(State*);
   void SetNextState(State*);
   void SetPositionRow(int);
@@ -41,6 +50,7 @@ class Cell {
   friend std::ostream& operator<<(std::ostream& os, const Cell& cell);
   State* actual_state;
   State* next_state;
+  Neighbords cell_neighbords;
   int pos_row;
   int pos_col;
 };

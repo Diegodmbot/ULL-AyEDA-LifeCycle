@@ -11,10 +11,17 @@
 
 #include "StateDead.hpp"
 
+#include "Grid.hpp"
+
 StateDead::StateDead() : State() {}
 
 StateDead::~StateDead() {}
 
 char StateDead::GetState() const { return ' '; }
+
+void StateDead::Neighbors(const Grid& world, int i, int j) {
+  Neighbords neighbords_ = world.GetCell(i, j).GetCellNeighbords();
+  nextstate_ = neighbords_.adult > 2 ? 1 : 0;
+}
 
 State* State::NextState() {}

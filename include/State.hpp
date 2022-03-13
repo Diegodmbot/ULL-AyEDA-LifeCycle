@@ -20,8 +20,12 @@ class State {
   State();
   ~State();
   virtual char GetState() const = 0;
+  virtual void Neighbors(const Grid&, int i, int j) = 0;
   virtual State* NextState() = 0;
-  virtual int Neighbors(const Grid&, int i, int j) = 0;
+
+ protected:
+  // true si transita al siguiente estado, false si muere
+  bool nextstate_;
 };
 
 #endif

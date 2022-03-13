@@ -14,7 +14,7 @@
 
 #include "Grid.hpp"
 
-Cell::Cell() {}
+Cell::Cell() = default;
 
 Cell::~Cell() {}
 
@@ -22,9 +22,7 @@ char Cell::GetActualState(void) const { return actual_state->GetState(); }
 
 char Cell::GetNextState(void) const { return next_state->GetState(); }
 
-int Cell::GetNeighboursAlive(void) const { return neighbords_alive; }
-
-void Cell::SetNeighbordsAlive(int neighbords) { neighbords_alive = neighbords; }
+Neighbords Cell::GetCellNeighbords(void) const { return cell_neighbords; }
 
 void Cell::SetActualState(State* state) { actual_state = state; }
 

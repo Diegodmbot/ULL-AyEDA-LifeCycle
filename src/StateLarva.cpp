@@ -11,6 +11,8 @@
 
 #include "StateLarva.hpp"
 
+#include "Grid.hpp"
+
 StateLarva::StateLarva() : State() {}
 
 StateLarva::~StateLarva() {}
@@ -18,3 +20,11 @@ StateLarva::~StateLarva() {}
 char StateLarva::GetState() const { return 'L'; }
 
 State* State::NextState() {}
+
+void StateLarva::Neighbors(const Grid& world, int i, int j) {
+  Neighbords neighbords_ = world.GetCell(i, j).GetCellNeighbords();
+  nextstate_ =
+      neighbords_.larva > neighbords_.egg + neighbords_.pupa + neighbords_.adult
+          ? 0
+          : 1;
+}

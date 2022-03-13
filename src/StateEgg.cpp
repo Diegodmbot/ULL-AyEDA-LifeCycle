@@ -11,6 +11,8 @@
 
 #include "StateEgg.hpp"
 
+#include "Grid.hpp"
+
 StateEgg::StateEgg() : State() {}
 
 StateEgg::~StateEgg() {}
@@ -18,3 +20,8 @@ StateEgg::~StateEgg() {}
 char StateEgg::GetState() const { return 'H'; }
 
 State* State::NextState() {}
+
+void StateEgg::Neighbors(const Grid& world, int i, int j) {
+  Neighbords neighbords_ = world.GetCell(i, j).GetCellNeighbords();
+  nextstate_ = neighbords_.larva > neighbords_.egg ? 0 : 1;
+}
