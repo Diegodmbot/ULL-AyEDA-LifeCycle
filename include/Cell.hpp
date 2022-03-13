@@ -15,7 +15,8 @@
 
 #include <iostream>
 
-typedef enum { kDead = 0, kAlive = 1 } CellStates;
+#include "State.hpp"
+
 const int kNunmberOfNeighbors = 8;
 
 class Grid;
@@ -25,11 +26,11 @@ class Cell {
   Cell();
   ~Cell(void);
   // Getters - Setters
-  CellStates GetActualState(void) const;
-  CellStates GetNextState(void) const;
+  char GetActualState(void) const;
+  char GetNextState(void) const;
   int GetNeighboursAlive(void) const;
-  void SetActualState(CellStates);
-  void SetNextState(CellStates);
+  void SetActualState(State*);
+  void SetNextState(State*);
   void SetNeighbordsAlive(int);
   void SetPositionRow(int);
   void SetPositionCol(int);
@@ -48,8 +49,8 @@ class Cell {
 
  private:
   friend std::ostream& operator<<(std::ostream& os, const Cell& cell);
-  CellStates actual_state;
-  CellStates next_state;
+  State* actual_state;
+  State* next_state;
   int neighbords_alive;
   int pos_row;
   int pos_col;
