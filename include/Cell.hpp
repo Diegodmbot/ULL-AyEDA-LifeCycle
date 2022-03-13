@@ -19,8 +19,6 @@
 
 const int kNunmberOfNeighbors = 8;
 
-class Grid;
-
 class Cell {
  public:
   Cell();
@@ -28,19 +26,11 @@ class Cell {
   // Getters - Setters
   char GetActualState(void) const;
   char GetNextState(void) const;
-  int GetNeighboursAlive(void) const;
   void SetActualState(State*);
   void SetNextState(State*);
-  void SetNeighbordsAlive(int);
   void SetPositionRow(int);
   void SetPositionCol(int);
-  // Metodos
-  /**
-   * @brief Calcula el numero de vecinos vivos de una celula
-   *
-   * @return int
-   */
-  int Neighbors(const Grid&);
+  // Metodos;
   /**
    * @brief Cambia el atributo next_state de una celula
    *
@@ -51,7 +41,6 @@ class Cell {
   friend std::ostream& operator<<(std::ostream& os, const Cell& cell);
   State* actual_state;
   State* next_state;
-  int neighbords_alive;
   int pos_row;
   int pos_col;
 };

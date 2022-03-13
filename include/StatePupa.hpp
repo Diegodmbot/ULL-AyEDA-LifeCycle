@@ -14,6 +14,13 @@
 
 #include "State.hpp"
 
-class StatePupa : public State {};
+class StatePupa : public State {
+ public:
+  StatePupa();
+  ~StatePupa();
+  char GetState() const;
+  State* NextState();
+  int Neighbors(const Grid&, int i, int j);
+};
 
 #endif

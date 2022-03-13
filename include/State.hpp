@@ -19,12 +19,9 @@ class State {
  public:
   State();
   ~State();
-  virtual int State::Neighbors(const Grid&, int i, int j) = 0;
-  virtual State* State::NextState() = 0;
-  virtual char State::GetState() const = 0;
-
- private:
-  int cell_state;
+  virtual char GetState() const = 0;
+  virtual State* NextState() = 0;
+  virtual int Neighbors(const Grid&, int i, int j) = 0;
 };
 
 #endif

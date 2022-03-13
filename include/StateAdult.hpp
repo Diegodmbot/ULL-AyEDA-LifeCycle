@@ -14,6 +14,13 @@
 
 #include "State.hpp"
 
-class StateAdult : public State {};
+class StateAdult : public State {
+ public:
+  StateAdult();
+  ~StateAdult();
+  char GetState() const;
+  State* NextState();
+  int Neighbors(const Grid&, int i, int j);
+};
 
 #endif

@@ -10,3 +10,11 @@
  */
 
 #include "StatePupa.hpp"
+
+StatePupa::StatePupa() : State() {}
+
+StatePupa::~StatePupa() {}
+
+char StatePupa::GetState() const { return 'P'; }
+
+State* State::NextState() {}

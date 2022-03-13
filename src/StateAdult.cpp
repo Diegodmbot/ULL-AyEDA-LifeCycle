@@ -10,3 +10,11 @@
  */
 
 #include "StateAdult.hpp"
+
+StateAdult::StateAdult() : State() {}
+
+StateAdult::~StateAdult() {}
+
+char StateAdult::GetState() const { return 'A'; }
+
+State* State::NextState() {}

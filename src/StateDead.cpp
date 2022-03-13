@@ -10,3 +10,11 @@
  */
 
 #include "StateDead.hpp"
+
+StateDead::StateDead() : State() {}
+
+StateDead::~StateDead() {}
+
+char StateDead::GetState() const { return ' '; }
+
+State* State::NextState() {}

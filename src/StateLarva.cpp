@@ -10,3 +10,11 @@
  */
 
 #include "StateLarva.hpp"
+
+StateLarva::StateLarva() : State() {}
+
+StateLarva::~StateLarva() {}
+
+char StateLarva::GetState() const { return 'L'; }
+
+State* State::NextState() {}

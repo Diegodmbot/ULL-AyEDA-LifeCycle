@@ -14,25 +14,21 @@
 
 #include "Grid.hpp"
 
-Cell::Cell() {
-  actual_state = kDead;
-  next_state = kDead;
-  neighbords_alive = 5;
-}
+Cell::Cell() {}
 
 Cell::~Cell() {}
 
-CellStates Cell::GetActualState(void) const { return actual_state; }
+char Cell::GetActualState(void) const { return actual_state->GetState(); }
 
-CellStates Cell::GetNextState(void) const { return next_state; }
+char Cell::GetNextState(void) const { return next_state->GetState(); }
 
 int Cell::GetNeighboursAlive(void) const { return neighbords_alive; }
 
 void Cell::SetNeighbordsAlive(int neighbords) { neighbords_alive = neighbords; }
 
-void Cell::SetActualState(CellStates state) { actual_state = state; }
+void Cell::SetActualState(State* state) { actual_state = state; }
 
-void Cell::SetNextState(CellStates state) { next_state = state; }
+void Cell::SetNextState(State* state) { next_state = state; }
 
 void Cell::SetPositionRow(int row) { pos_row = row; }
 
@@ -64,17 +60,6 @@ void Cell::UpdateState(void) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Cell& cell) {
-  char output;
-  switch (cell.actual_state) {
-    case 0:
-      output = '-';
-      break;
-    case 1:
-      output = 'X';
-      break;
-    default:
-      break;
-  }
-  os << output;
+  os << cell.actual_state->GetState();
   return os;
 }

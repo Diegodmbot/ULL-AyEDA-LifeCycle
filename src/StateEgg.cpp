@@ -10,3 +10,11 @@
  */
 
 #include "StateEgg.hpp"
+
+StateEgg::StateEgg() : State() {}
+
+StateEgg::~StateEgg() {}
+
+char StateEgg::GetState() const { return 'H'; }
+
+State* State::NextState() {}
