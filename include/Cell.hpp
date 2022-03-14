@@ -20,26 +20,27 @@
 const int kNunmberOfNeighbors = 8;
 
 struct Neighbords {
-  int dead = 0;
-  int egg = 0;
-  int larva = 0;
-  int pupa = 0;
-  int adult = 0;
+  int dead;
+  int egg;
+  int larva;
+  int pupa;
+  int adult;
 };
 
 class Cell {
  public:
   Cell();
-  ~Cell(void);
+  ~Cell();
   // Getters - Setters
-  char GetActualState(void) const;
-  char GetNextState(void) const;
-  Neighbords GetCellNeighbords(void) const;
+  char GetActualState() const;
+  State* GetNextState() const;
+  Neighbords GetCellNeighbords() const;
   void SetActualState(State*);
   void SetNextState(State*);
   void SetPositionRow(int);
   void SetPositionCol(int);
   // Metodos;
+  void Neighbors(const Grid& map);
   /**
    * @brief Cambia el atributo next_state de una celula
    *
@@ -48,6 +49,11 @@ class Cell {
 
  private:
   friend std::ostream& operator<<(std::ostream& os, const Cell& cell);
+  /**
+   * @brief Pone a cero todos los enteros del struct Neighbords
+   *
+   */
+  void SetNeighbordsZero(void);
   State* actual_state;
   State* next_state;
   Neighbords cell_neighbords;

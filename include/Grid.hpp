@@ -29,18 +29,18 @@ const int kDefaultSize = 50;
 class Grid {
  public:
   Grid(char*);
-  ~Grid(void);
+  ~Grid();
   // Getters - Setters
-  int GetRowSize(void);
-  int GetColumnSize(void);
+  int GetRowSize();
+  int GetColumnSize();
   const Cell& GetCell(int, int) const;
   // Metodos
   /**
    * @brief Se pasa al siguiente turno
    *
    */
-  void NextGeneration(void);
-  void Write(void);
+  void NextGeneration();
+  void Write();
 
  private:
   /**
@@ -57,7 +57,7 @@ class Grid {
    * @return tamano final de la matriz
    */
   int FormatSize(const int);
-  void SetPositionCell(void);
+  void SetPositionCell();
   int row_size;
   int column_size;
   matrix_t matrix_cell;

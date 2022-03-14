@@ -14,13 +14,13 @@
 
 #include "Grid.hpp"
 
-Cell::Cell() = default;
+Cell::Cell() { SetNeighbordsZero(); }
 
 Cell::~Cell() {}
 
 char Cell::GetActualState(void) const { return actual_state->GetState(); }
 
-char Cell::GetNextState(void) const { return next_state->GetState(); }
+State* Cell::GetNextState(void) const { return next_state; }
 
 Neighbords Cell::GetCellNeighbords(void) const { return cell_neighbords; }
 
@@ -32,32 +32,48 @@ void Cell::SetPositionRow(int row) { pos_row = row; }
 
 void Cell::SetPositionCol(int col) { pos_col = col; }
 
-int Cell::Neighbors(const Grid& map) {
-  int counter = 0;
+void Cell::Neighbors(const Grid& map) {
+  SetNeighbordsZero();
   int i_ = pos_col + 1;
   int j_ = pos_row + 1;
   for (int i = pos_col - 1; i <= i_; i++) {
     for (int j = pos_row - 1; j <= j_; j++) {
-      if (map.GetCell(i, j).GetActualState() == kAlive) counter++;
+      if (!(i == 0 && j == 0)) {
+        switch (map.GetCell(i, j).GetActualState()) {
+          case ' ':
+            cell_neighbords.dead++;
+            break;
+          case 'H':
+            cell_neighbords.egg++;
+            break;
+          case 'L':
+            cell_neighbords.larva++;
+            break;
+          case 'P':
+            cell_neighbords.egg++;
+            break;
+          case 'A':
+            cell_neighbords.egg++;
+            break;
+          default:
+            break;
+        }
+      }
     }
   }
-  if (actual_state == kAlive) --counter;
-  return counter;
 }
 
-void Cell::UpdateState(void) {
-  // Si la celula esta muerta y tiene 3 vecinos vivos pasa a estar viva
-  if (actual_state == kDead && neighbords_alive == 3) next_state = kAlive;
-  // Si la celula esta viva y tiene 3 o 2 vecinos vivos sigue viva
-  else if (actual_state == kAlive &&
-           (neighbords_alive == 3 || neighbords_alive == 2))
-    next_state = kAlive;
-  // En cualquier otro caso la celula esta muerta
-  else
-    next_state = kDead;
-}
+void Cell::UpdateState(void) { next_state->NextState(); }
 
 std::ostream& operator<<(std::ostream& os, const Cell& cell) {
   os << cell.actual_state->GetState();
   return os;
+}
+
+void Cell::SetNeighbordsZero(void) {
+  cell_neighbords.dead = 0;
+  cell_neighbords.egg = 0;
+  cell_neighbords.larva = 0;
+  cell_neighbords.pupa = 0;
+  cell_neighbords.adult = 0;
 }

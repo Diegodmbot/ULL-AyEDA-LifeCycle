@@ -19,7 +19,7 @@ class State {
  public:
   State();
   ~State();
-  virtual char GetState() const = 0;
+  virtual char GetState(void) const = 0;
   virtual void Neighbors(const Grid&, int i, int j) = 0;
   virtual State* NextState() = 0;
 
