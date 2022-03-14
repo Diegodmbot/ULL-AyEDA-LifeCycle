@@ -40,6 +40,11 @@ class Cell {
   void SetPositionRow(int);
   void SetPositionCol(int);
   // Metodos;
+  /**
+   * @brief Actuliza el conteo de vecinos de cada celula
+   *
+   * @param map
+   */
   void Neighbors(const Grid& map);
   /**
    * @brief Cambia el atributo next_state de una celula
