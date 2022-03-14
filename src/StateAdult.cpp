@@ -9,9 +9,8 @@
  * @brief: Ciclo de la Vida
  */
 
-#include "StateAdult.hpp"
-
 #include "Grid.hpp"
+#include "State.hpp"
 
 StateAdult::StateAdult() : State() {}
 
@@ -19,7 +18,14 @@ StateAdult::~StateAdult() {}
 
 char StateAdult::GetState() const { return 'A'; }
 
-State* State::NextState() {}
+State* State::NextState() {
+  State* output;
+  if (nextstate_ == true)
+    output = new StateEgg();
+  else
+    output = new StateDead();
+  return output;
+}
 
 void StateAdult::Neighbors(const Grid& world, int i, int j) {
   Neighbords neighbords_ = world.GetCell(i, j).GetCellNeighbords();

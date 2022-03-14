@@ -9,9 +9,8 @@
  * @brief: Ciclo de la Vida
  */
 
-#include "StateDead.hpp"
-
 #include "Grid.hpp"
+#include "State.hpp"
 
 StateDead::StateDead() : State() {}
 
@@ -24,4 +23,11 @@ void StateDead::Neighbors(const Grid& world, int i, int j) {
   nextstate_ = neighbords_.adult > 2 ? 1 : 0;
 }
 
-State* State::NextState() {}
+State* State::NextState() {
+  State* output;
+  if (nextstate_ == true)
+    output = new StateEgg();
+  else
+    output = new StateDead();
+  return output;
+}

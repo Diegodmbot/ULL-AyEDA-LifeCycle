@@ -9,9 +9,8 @@
  * @brief: Ciclo de la Vida
  */
 
-#include "StatePupa.hpp"
-
 #include "Grid.hpp"
+#include "State.hpp"
 
 StatePupa::StatePupa() : State() {}
 
@@ -19,7 +18,14 @@ StatePupa::~StatePupa() {}
 
 char StatePupa::GetState() const { return 'P'; }
 
-State* State::NextState() {}
+State* State::NextState() {
+  State* output;
+  if (nextstate_ == true)
+    output = new StateAdult();
+  else
+    output = new StateDead();
+  return output;
+}
 
 void StatePupa::Neighbors(const Grid& world, int i, int j) {
   Neighbords neighbords_ = world.GetCell(i, j).GetCellNeighbords();

@@ -28,4 +28,49 @@ class State {
   bool nextstate_;
 };
 
+class StateDead : public State {
+ public:
+  StateDead();
+  ~StateDead();
+  char GetState() const;
+  State* NextState();
+  void Neighbors(const Grid&, int i, int j);
+};
+
+class StateEgg : public State {
+ public:
+  StateEgg();
+  ~StateEgg();
+  char GetState() const;
+  State* NextState();
+  void Neighbors(const Grid&, int i, int j);
+};
+
+class StateLarva : public State {
+ public:
+  StateLarva();
+  ~StateLarva();
+  char GetState() const;
+  State* NextState();
+  void Neighbors(const Grid&, int i, int j);
+};
+
+class StatePupa : public State {
+ public:
+  StatePupa();
+  ~StatePupa();
+  char GetState() const;
+  State* NextState();
+  void Neighbors(const Grid&, int i, int j);
+};
+
+class StateAdult : public State {
+ public:
+  StateAdult();
+  ~StateAdult();
+  char GetState() const;
+  State* NextState();
+  void Neighbors(const Grid&, int i, int j);
+};
+
 #endif

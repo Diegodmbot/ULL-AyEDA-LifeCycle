@@ -14,6 +14,6 @@
 
 #include "Grid.hpp"
 
-State::State() {}
+State::State() = default;
 
 State::~State() {}

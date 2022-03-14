@@ -9,9 +9,8 @@
  * @brief: Ciclo de la Vida
  */
 
-#include "StateLarva.hpp"
-
 #include "Grid.hpp"
+#include "State.hpp"
 
 StateLarva::StateLarva() : State() {}
 
@@ -19,7 +18,14 @@ StateLarva::~StateLarva() {}
 
 char StateLarva::GetState() const { return 'L'; }
 
-State* State::NextState() {}
+State* State::NextState() {
+  State* output;
+  if (nextstate_ == true)
+    output = new StatePupa();
+  else
+    output = new StateDead();
+  return output;
+}
 
 void StateLarva::Neighbors(const Grid& world, int i, int j) {
   Neighbords neighbords_ = world.GetCell(i, j).GetCellNeighbords();
