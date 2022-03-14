@@ -14,7 +14,11 @@
 
 #include "Grid.hpp"
 
-Cell::Cell() { SetNeighbordsZero(); }
+Cell::Cell() {
+  SetNeighbordsZero();
+  actual_state = new StateDead();
+  next_state = new StateDead();
+}
 
 Cell::~Cell() {}
 
@@ -40,7 +44,7 @@ void Cell::Neighbors(const Grid& map) {
     for (int j = pos_row - 1; j <= j_; j++) {
       if (!(i == 0 && j == 0)) {
         switch (map.GetCell(i, j).GetActualState()) {
-          case ' ':
+          case '.':
             cell_neighbords.dead++;
             break;
           case 'H':

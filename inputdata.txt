@@ -3,6 +3,6 @@
 // Numero de celulas
 3
 // Coordenadas de las celulas
-1 1
-1 2
-1 3
+3 3
+3 2
+3 1
