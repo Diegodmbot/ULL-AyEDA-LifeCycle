@@ -34,6 +34,7 @@ void Grid::NextGeneration(void) {
   Cell cell_aux;
   for (int i = 2; i <= row_size; i++) {
     for (int j = 2; j <= column_size; j++) {
+      // no funciona
       matrix_cell(i, j).Neighbors(*this);
       matrix_cell(i, j).UpdateState();
     }
@@ -96,7 +97,7 @@ void Grid::Read(char* arg) {
       int irow = std::stoi(srow);
       int icol = std::stoi(scol);
       if (BETWEEN(irow, 1, row_size) && BETWEEN(icol, 1, column_size))
-        matrix_cell(irow + 1, icol + 1).SetActualState(new StateEgg());
+        matrix_cell(irow + 1, icol + 1).SetActualState(new StateAdult());
     }
   }
   data_file.close();

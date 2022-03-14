@@ -54,10 +54,10 @@ void Cell::Neighbors(const Grid& map) {
             cell_neighbords.larva++;
             break;
           case 'P':
-            cell_neighbords.egg++;
+            cell_neighbords.pupa++;
             break;
           case 'A':
-            cell_neighbords.egg++;
+            cell_neighbords.adult++;
             break;
           default:
             break;
@@ -65,9 +65,10 @@ void Cell::Neighbors(const Grid& map) {
       }
     }
   }
+  actual_state->Neighbors(map, pos_row, pos_col);
 }
 
-void Cell::UpdateState(void) { next_state->NextState(); }
+void Cell::UpdateState(void) { next_state = actual_state->NextState(); }
 
 std::ostream& operator<<(std::ostream& os, const Cell& cell) {
   os << cell.actual_state->GetState();
