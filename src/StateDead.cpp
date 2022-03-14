@@ -23,7 +23,7 @@ void StateDead::Neighbors(const Grid& world, int i, int j) {
   nextstate_ = neighbords_.adult > 2 ? 1 : 0;
 }
 
-State* State::NextState() {
+State* StateDead::NextState() {
   State* output;
   if (nextstate_ == true)
     output = new StateEgg();

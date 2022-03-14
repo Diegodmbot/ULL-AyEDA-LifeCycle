@@ -18,19 +18,19 @@ StatePupa::~StatePupa() {}
 
 char StatePupa::GetState() const { return 'P'; }
 
-State* State::NextState() {
-  State* output;
-  if (nextstate_ == true)
-    output = new StateAdult();
-  else
-    output = new StateDead();
-  return output;
-}
-
 void StatePupa::Neighbors(const Grid& world, int i, int j) {
   Neighbords neighbords_ = world.GetCell(i, j).GetCellNeighbords();
   nextstate_ = neighbords_.larva > neighbords_.egg + neighbords_.pupa +
                                        neighbords_.adult + neighbords_.dead
                    ? 0
                    : 1;
+}
+
+State* StatePupa::NextState() {
+  State* output;
+  if (nextstate_ == true)
+    output = new StateAdult();
+  else
+    output = new StateDead();
+  return output;
 }

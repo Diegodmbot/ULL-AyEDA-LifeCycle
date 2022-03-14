@@ -18,16 +18,16 @@ StateAdult::~StateAdult() {}
 
 char StateAdult::GetState() const { return 'A'; }
 
-State* State::NextState() {
+void StateAdult::Neighbors(const Grid& world, int i, int j) {
+  Neighbords neighbords_ = world.GetCell(i, j).GetCellNeighbords();
+  nextstate_ = neighbords_.adult > 0 ? 1 : 0;
+}
+
+State* StateAdult::NextState() {
   State* output;
   if (nextstate_ == true)
     output = new StateEgg();
   else
     output = new StateDead();
   return output;
-}
-
-void StateAdult::Neighbors(const Grid& world, int i, int j) {
-  Neighbords neighbords_ = world.GetCell(i, j).GetCellNeighbords();
-  nextstate_ = neighbords_.adult > 0 ? 1 : 0;
 }
