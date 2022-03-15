@@ -20,8 +20,8 @@ char StatePupa::GetState() const { return 'P'; }
 
 void StatePupa::Neighbors(const Grid& world, int i, int j) {
   Neighbords neighbords_ = world.GetCell(i, j).GetCellNeighbords();
-  nextstate_ = neighbords_.larva > neighbords_.egg + neighbords_.pupa +
-                                       neighbords_.adult + neighbords_.dead
+  nextstate_ = neighbords_.larva > (neighbords_.egg + neighbords_.pupa +
+                                    neighbords_.adult + neighbords_.dead)
                    ? 0
                    : 1;
 }
